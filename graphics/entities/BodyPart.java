@@ -47,12 +47,14 @@ public class BodyPart {
     public void draw(Graphics g){
         //jadi fill kotaknya pakai warna hitam, lalu timpah pake warna lain
         //bikin border
-        g.setColor(Color.BLACK);
-        g.fillRect(xCoor*width, yCoor*height, width, height);
+//        g.setColor(Color.BLACK);
+//        g.fillRect(xCoor*width, yCoor*height, width, height);
         //bikin fill
-        g.setColor(Color.GREEN);
-        g.fillRect(xCoor*width+2, yCoor*height+2, width-4, height-4);
-        
+//        g.setColor(Color.GREEN);
+//        g.fillRect(xCoor*width+2, yCoor*height+2, width-4, height-4);
+        //more modern look
+        g.setColor(Color.WHITE);
+        g.fillOval(xCoor*width, yCoor*height, width, height);
         
     }
     

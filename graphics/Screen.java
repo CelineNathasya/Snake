@@ -132,16 +132,18 @@ public class Screen extends JPanel implements Runnable{
     public void paint(Graphics g){
         //clear screen so it looked like moving
         g.clearRect(0, 0, WIDTH, HEIGHT);
+        g.setColor(new Color(0, 0, 0));
+        g.fillRect(0, 0, WIDTH, HEIGHT);
         //bikin warna line nya jadi hitam
-        g.setColor(Color.BLACK);
+//        g.setColor(Color.BLACK);
         //bikin garis horizontal
-        for(int i = 0; i<WIDTH/10; i++){
-            g.drawLine(i*10, 0, i*10, HEIGHT);
-        }
+//        for(int i = 0; i<WIDTH/10; i++){
+//            g.drawLine(i*10, 0, i*10, HEIGHT);
+//        }
         //bikin garis vertikal
-        for(int i = 0; i<HEIGHT/10; i++){
-            g.drawLine(0, i*10, WIDTH, i*10);
-        }
+//        for(int i = 0; i<HEIGHT/10; i++){
+//            g.drawLine(0, i*10, WIDTH, i*10);
+//        }
         
         for(int i = 0; i < snake.size();i++){
            snake.get(i).draw(g);
