@@ -24,7 +24,7 @@ import snake.graphics.entities.BodyPart;
  */
 public class Screen extends JPanel implements Runnable{
     
-    public static final int WIDTH = 800, HEIGHT = 800;
+    public static final int WIDTH = 400, HEIGHT = 400;
     private Thread thread;
     private boolean running = false;
     
@@ -68,8 +68,8 @@ public class Screen extends JPanel implements Runnable{
         
         if (apples.size() == 0){
             //tilesnya ada 80, yg terakhir jadi 79
-            int xCoor = rand.nextInt(79);
-            int yCoor = rand.nextInt(79);
+            int xCoor = rand.nextInt(39);
+            int yCoor = rand.nextInt(39);
             
             apple = new Apple(xCoor, yCoor, 10);
             apples.add(apple);           
@@ -93,16 +93,18 @@ public class Screen extends JPanel implements Runnable{
             }
         }
         
-        if (xCoor < 0 || xCoor > 79 || yCoor < 0 || yCoor > 79){
+        if (xCoor < 0 || xCoor > 39 || yCoor < 0 || yCoor > 39){
             stop();
         }
         
         
         // biar jalan
-        ticks++;
+//        ticks++;
+        
+        //REPLACE TICKS WITH Thread.sleep()
         
         //set kecepatan waktu nya
-        if(ticks>500000){
+//        if(ticks>1000000){
             if(right){
                 xCoor++;
             }
@@ -115,7 +117,7 @@ public class Screen extends JPanel implements Runnable{
             if(down){
                 yCoor++;
             }
-            ticks = 0;
+//            ticks = 0;
             
             b = new BodyPart(xCoor, yCoor, 10);
             snake.add(b);
@@ -124,7 +126,7 @@ public class Screen extends JPanel implements Runnable{
             if(snake.size()>size){
                 snake.remove(0);
             }
-        }
+//        }
         
         
     }
@@ -136,11 +138,11 @@ public class Screen extends JPanel implements Runnable{
         g.fillRect(0, 0, WIDTH, HEIGHT);
         //bikin warna line nya jadi hitam
 //        g.setColor(Color.BLACK);
-        //bikin garis horizontal
+//        //bikin garis horizontal
 //        for(int i = 0; i<WIDTH/10; i++){
 //            g.drawLine(i*10, 0, i*10, HEIGHT);
 //        }
-        //bikin garis vertikal
+//        //bikin garis vertikal
 //        for(int i = 0; i<HEIGHT/10; i++){
 //            g.drawLine(0, i*10, WIDTH, i*10);
 //        }
@@ -173,7 +175,12 @@ public class Screen extends JPanel implements Runnable{
         while(running){
             //biar tau lagi jalan
             tick();
-            repaint(); 
+            repaint();
+            try {
+                Thread.sleep(200);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Screen.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
     
@@ -218,7 +225,7 @@ public class Screen extends JPanel implements Runnable{
 
         @Override
         public void keyTyped(KeyEvent ke) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+           
         }
         
         

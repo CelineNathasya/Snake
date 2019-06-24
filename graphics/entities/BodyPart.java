@@ -23,10 +23,6 @@ public class BodyPart {
         height = tileSize;
     }
     
-    public void tick(){
-        
-    }
-    
      public int getxCoor(){
         return xCoor;
     }
@@ -52,6 +48,7 @@ public class BodyPart {
         //bikin fill
 //        g.setColor(Color.GREEN);
 //        g.fillRect(xCoor*width+2, yCoor*height+2, width-4, height-4);
+
         //more modern look
         g.setColor(Color.WHITE);
         g.fillOval(xCoor*width, yCoor*height, width, height);
