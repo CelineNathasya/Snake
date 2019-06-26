@@ -65,14 +65,17 @@ public class Screen extends JPanel implements Runnable{
             b = new BodyPart(xCoor, yCoor, 10);
             snake.add(b);
         }
-        
         if (apples.size() == 0){
             //tilesnya ada 80, yg terakhir jadi 79
-            int xCoor = rand.nextInt(39);
-            int yCoor = rand.nextInt(39);
-            
+            int xCoor;
+            int yCoor;
+            //utk cek kalo apelnya kena badannya apa ngga
+            do {
+                xCoor = rand.nextInt(40);
+                yCoor = rand.nextInt(40);    
+            } while (snake.contains(new BodyPart(xCoor, yCoor, 10)));
             apple = new Apple(xCoor, yCoor, 10);
-            apples.add(apple);           
+            apples.add(apple);
         }
         
         //loop supaya bisa muncul terus apelnya
@@ -101,10 +104,9 @@ public class Screen extends JPanel implements Runnable{
         // biar jalan
 //        ticks++;
         
-        //REPLACE TICKS WITH Thread.sleep()
-        
         //set kecepatan waktu nya
 //        if(ticks>1000000){
+        // uda ganti pake thread.sleep
             if(right){
                 xCoor++;
             }
@@ -165,7 +167,10 @@ public class Screen extends JPanel implements Runnable{
     public void stop(){
         running = false;
         try {
+            System.out.println("YOU LOSE");
+            System.out.println(size-5);
             thread.join();
+           
         } catch (InterruptedException ex) {
             Logger.getLogger(Screen.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -177,12 +182,13 @@ public class Screen extends JPanel implements Runnable{
             tick();
             repaint();
             try {
-                Thread.sleep(200);
+                Thread.sleep(100);
             } catch (InterruptedException ex) {
                 Logger.getLogger(Screen.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }
+
     
     private class Key implements KeyListener{
 

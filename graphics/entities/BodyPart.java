@@ -54,5 +54,13 @@ public class BodyPart {
         g.fillOval(xCoor*width, yCoor*height, width, height);
         
     }
-    
+
+    // untuk .contains() nya
+    // buat containnya tau apa yang dicompare karena yang dibuat adalah custom object
+    @Override
+    public boolean equals(Object o) {
+        if (o == null) return false;
+        BodyPart bodyPart = (BodyPart) o;
+        return (bodyPart.getxCoor() == this.xCoor && bodyPart.getyCoor() == this.yCoor);
+    }
 }
