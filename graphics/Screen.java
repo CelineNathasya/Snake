@@ -138,6 +138,10 @@ public class Screen extends JPanel implements Runnable{
         g.clearRect(0, 0, WIDTH, HEIGHT);
         g.setColor(new Color(0, 0, 0));
         g.fillRect(0, 0, WIDTH, HEIGHT);
+        //score
+        g.setColor(Color.WHITE);
+        int score = size - 5;
+        g.drawString(String.valueOf(score), 380, 20);
         //bikin warna line nya jadi hitam
 //        g.setColor(Color.BLACK);
 //        //bikin garis horizontal
