@@ -45,6 +45,9 @@ public class Screen extends JPanel implements Runnable{
     
     private Key key;
     
+    //speed
+    private int speed = 100;
+    
     public Screen() {
         setFocusable(true);
         key = new Key();
@@ -87,7 +90,7 @@ public class Screen extends JPanel implements Runnable{
                 i--;
             }
         }
-        
+        // kalau snake kena badannya sendiri
         for(int i = 0; i<snake.size(); i++){
             if(xCoor == snake.get(i).getxCoor() && yCoor == snake.get(i).getyCoor()){
                 if(i != snake.size() - 1){
@@ -95,7 +98,7 @@ public class Screen extends JPanel implements Runnable{
                 }
             }
         }
-        
+        // kalau kena ujung frame
         if (xCoor < 0 || xCoor > 39 || yCoor < 0 || yCoor > 39){
             stop();
         }
@@ -142,7 +145,7 @@ public class Screen extends JPanel implements Runnable{
         g.setColor(Color.WHITE);
         int score = size - 5;
         g.drawString(String.valueOf(score), 380, 20);
-        //bikin warna line nya jadi hitam
+//        bikin warna line nya jadi hitam
 //        g.setColor(Color.BLACK);
 //        //bikin garis horizontal
 //        for(int i = 0; i<WIDTH/10; i++){
@@ -186,7 +189,7 @@ public class Screen extends JPanel implements Runnable{
             tick();
             repaint();
             try {
-                Thread.sleep(100);
+                thread.sleep(speed - ((size-5)*5));
             } catch (InterruptedException ex) {
                 Logger.getLogger(Screen.class.getName()).log(Level.SEVERE, null, ex);
             }
